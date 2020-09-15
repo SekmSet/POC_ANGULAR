@@ -1,0 +1,27 @@
+<h1></h1>
+<p>pokemon works!</p>
+
+<img [src]="pokemonInfo?.sprites.front_default" alt="default image of this pokemon">
+
+<h6>Types</h6>
+<ul>
+  <li *ngFor="let pokemonTypeInfo of pokemonInfo?.types ">
+    {{pokemonTypeInfo.type.name}}
+  </li>
+</ul>
+
+
+<h6>Abilities</h6>
+<ul>
+  <li  *ngFor="let pokemonAbilityInfo of pokemonInfo?.abilities " >
+    {{pokemonAbilityInfo.ability.name}}
+  </li>
+</ul>
+
+<h6>Moves</h6>
+<ul>
+  <li  *ngFor="let pokemonMoveInfo of pokemonInfo?.moves ">
+    {{pokemonMoveInfo.move.name}}
+
+  </li>
+</ul>

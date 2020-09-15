@@ -1,0 +1,8 @@
+<h1>Pokemons</h1>
+<p>list-pokemons works!</p>
+
+<ul>
+  <li *ngFor="let listPokemon of listPokemon ">
+    <h3>{{listPokemon.name}}</h3> - <a [routerLink]="['/pokemons', listPokemon.name]">See</a>
+  </li>
+</ul>
