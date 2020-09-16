@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {HttpClient} from "@angular/common/http";
+import {PokemonService} from "../../services/pokemon.service";
 
 export interface PokemonResponse{
   abilities: Abilities[]
@@ -10,10 +11,6 @@ export interface PokemonResponse{
   }
   types: Type[]
 }
-// interface Ability {
-//   name: string,
-//   url: string
-// }
 
 export interface Abilities{
   ability: {
@@ -47,18 +44,12 @@ export class ShowPokemonComponent implements OnInit {
 
   pokemonInfo: PokemonResponse;
 
-  private _pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/';
-
-  constructor(private actRoute: ActivatedRoute, private _httpClient: HttpClient) { }
+  constructor(private actRoute: ActivatedRoute, private _httpClient: HttpClient, private PokemonService : PokemonService ) { }
 
   ngOnInit(): void {
     this.name = this.actRoute.snapshot.params.name;
-    console.log(this.name);
-    this._httpClient.get<PokemonResponse>(`${this._pokemonUrl}${this.name}`).subscribe(PokemonResponse => {
+    this.PokemonService.getPokemon(this.name).subscribe(PokemonResponse => {
       this.pokemonInfo = PokemonResponse
-      console.log(this.pokemonInfo);
     })
-
   }
-
 }

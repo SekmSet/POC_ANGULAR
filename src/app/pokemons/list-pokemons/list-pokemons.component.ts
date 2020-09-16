@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {PokemonService} from "../../services/pokemon.service";
 
 
 export interface PokemonListResponse {
@@ -21,14 +22,12 @@ export class ListPokemonsComponent implements OnInit {
   pokemonCount: number;
   listPokemon: Pokemon[];
 
-  private _pokemonsListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1050';
-
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient,  private PokemonService : PokemonService) {
 
   }
 
   ngOnInit(): void {
-    this._httpClient.get<PokemonListResponse>(this._pokemonsListUrl).subscribe(PokemonListResponse =>{
+    this.PokemonService.getPokemons().subscribe(PokemonListResponse =>{
       this.pokemonCount = PokemonListResponse.count;
       this.listPokemon = PokemonListResponse.results.map(result =>({
         name: result.name,
