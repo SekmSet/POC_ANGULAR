@@ -1,8 +1,17 @@
 <h1>Pokemons</h1>
-<p>list-pokemons works!</p>
-
-<ul>
-  <li *ngFor="let listPokemon of listPokemon ">
-    <h3>{{listPokemon.name}}</h3> - <a [routerLink]="['/pokemons', listPokemon.name]">See</a>
-  </li>
-</ul>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">View</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let listPokemon of listPokemon; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+     <td>{{listPokemon.name}}</td>
+    <td><a [routerLink]="['/pokemons', listPokemon.name]">See</a></td>
+  </tr>
+  </tbody>
+</table>

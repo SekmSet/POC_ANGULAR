@@ -1,27 +1,38 @@
-<h1></h1>
-<p>pokemon works!</p>
+<h1>Pokemon</h1>
+<ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+  <ngb-panel id="custom-panel-1">
+    <ng-template ngbPanelHeader >
+      <div class="d-flex align-items-center justify-content-between">
+        <h5 class="m-0"><img [src]="pokemonInfo?.sprites.front_default" alt="default image of this pokemon">
+        </h5>
+       </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <h6>Types</h6>
+      <ul>
+        <li *ngFor="let pokemonTypeInfo of pokemonInfo?.types ">
+          {{pokemonTypeInfo.type.name}}
+        </li>
+      </ul>
 
-<img [src]="pokemonInfo?.sprites.front_default" alt="default image of this pokemon">
+      <h6>Abilities</h6>
+      <ul>
+        <li  *ngFor="let pokemonAbilityInfo of pokemonInfo?.abilities " >
+          {{pokemonAbilityInfo.ability.name}}
+        </li>
+      </ul>
 
-<h6>Types</h6>
-<ul>
-  <li *ngFor="let pokemonTypeInfo of pokemonInfo?.types ">
-    {{pokemonTypeInfo.type.name}}
-  </li>
-</ul>
+      <h6>Moves</h6>
+      <ul>
+        <li  *ngFor="let pokemonMoveInfo of pokemonInfo?.moves ">
+          {{pokemonMoveInfo.move.name}}
+
+        </li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
 
 
-<h6>Abilities</h6>
-<ul>
-  <li  *ngFor="let pokemonAbilityInfo of pokemonInfo?.abilities " >
-    {{pokemonAbilityInfo.ability.name}}
-  </li>
-</ul>
 
-<h6>Moves</h6>
-<ul>
-  <li  *ngFor="let pokemonMoveInfo of pokemonInfo?.moves ">
-    {{pokemonMoveInfo.move.name}}
 
-  </li>
-</ul>
